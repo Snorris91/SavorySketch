@@ -10,29 +10,23 @@ import { MyProfile } from "../views/Profile.jsx";
 import { Recipe } from "../views/Recipe.jsx";
 import { MyRecipe } from "../views/MyRecipe.jsx";
 import { AddRecipe } from "../views/AddRecipe.jsx";
+import { AddRecipe2 } from "../views/AddRecipe2.jsx";
 
 export const ApplicationViews = () => {
-  const [currentUser, setCurrentUser] = useState({});
 
-  useEffect(() => {
-    const localSavoryUser = localStorage.getItem("user_id");
-    const savoryUserObject = JSON.parse(localSavoryUser);
-
-    setCurrentUser(savoryUserObject);
-  }, []);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route element={<Authorized />}>
+        <Route element={<Authorized/>}>
           <Route index element={<Home />} />
           <Route path="/recipes" element={<Recipe />} />
           <Route path="/myrecipes" element={<MyRecipe />} />
           <Route
             path="/addrecipes"
-            element={<AddRecipe currentUser={currentUser} />}
+            element={<AddRecipe/>}
           />
           <Route path="/cuisines" element={<Cuisines />} />
           <Route path="/ingredients" element={<Ingredients />} />
