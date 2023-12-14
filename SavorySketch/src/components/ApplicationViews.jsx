@@ -10,7 +10,6 @@ import { MyProfile } from "../views/Profile.jsx";
 import { Recipe } from "../views/Recipe.jsx";
 import { MyRecipe } from "../views/MyRecipe.jsx";
 import { AddRecipe } from "../views/AddRecipe.jsx";
-import { AddRecipe2 } from "../views/AddRecipe2.jsx";
 
 export const ApplicationViews = () => {
 
