@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { fetchUserById } from "../services/UserService"
+import { fetchMyRecipesFromAPI } from "../services/RecipeService"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -7,16 +9,24 @@ import { fetchUserById } from "../services/UserService"
 
 export const MyProfile = () => {
 
+    const navigate = useNavigate()
     const [savoryUser, setSavoryUser] = useState([])
-    const fetchAndSetSavoryUser = () => {
+    // const [myRecipes, setMyRecipes] = useState([])
+    const fetchAndSetSavoryUser = async () => {
         const tokenString = localStorage.getItem("token");
         const token = JSON.parse(tokenString);
         const userId = token.user_id;
 
-        fetchUserById(userId).then((userArray) => {
+        await fetchUserById(userId).then((userArray) => {
             setSavoryUser(userArray)
         })
     }
+
+    // const fetchAndSetRecipeByUserId = () => {
+    //     fetchMyRecipesFromAPI(savoryUser).then((recipeArray) => {
+    //         setMyRecipes(recipeArray)
+    //     })
+    // }
     useEffect(() => {
         fetchAndSetSavoryUser()
     },[])
@@ -25,8 +35,34 @@ export const MyProfile = () => {
     return (
         <>
         <div>
-                    <h1>OBI WON KENOBI</h1>
+                    <h1 className="title text-center text-4xl">Your Profile</h1>
+                    <div className="profile-card flex justify-evenly">
+                        <div className="profile-left text-center m-1">
 
+            <span>{savoryUser.user?.full_name}</span>
+            <img src={savoryUser.profile_img} alt="Profile Image" className="image h-[250px] w-[250px]" />
+            <span className="cantact font-bold">Date Joined:</span> {savoryUser.created_on}
+                        </div>
+                        <div className="profile-right flex flex-col text-center justify-evenly">
+
+                    <div>
+                    <span className="cantact font-bold">Biography<br></br></span>
+                        {savoryUser.biography}
+                    </div>
+                    <div>
+                        <span className="cantact font-bold">Contact<br></br>
+                        </span>{savoryUser.user?.email}
+                    </div>
+                    <div className="profile-button flex">
+
+                    <button onClick={() => {
+                navigate(`/myRecipes`);
+              }} className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl w-40 m-2">View My Recipes</button>
+                    <button className="recipe-btn m-2 border-black border-solid border-2 p-2 rounded-3xl w-40">Edit Profile</button>
+
+                    </div>
+                        </div>
+</div>
         </div>
         </>
     )

@@ -15,7 +15,7 @@ export const fetchOneRecipeFromAPI = (recipe) => {
 };
 
 export const fetchMyRecipesFromAPI = (user) => {
-  return fetch(`http://localhost:8000/recipes/${user.id}`, {
+  return fetch(`http://localhost:8000/recipes/${user}`, {
     headers: {
       Authorization: `Token ${JSON.parse(localStorage.getItem("token")).token}`,
     },
