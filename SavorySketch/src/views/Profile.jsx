@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { fetchUserById } from "../services/UserService"
-import { fetchMyRecipesFromAPI } from "../services/RecipeService"
 import { useNavigate } from "react-router-dom"
 
 
@@ -11,7 +10,6 @@ export const MyProfile = () => {
 
     const navigate = useNavigate()
     const [savoryUser, setSavoryUser] = useState([])
-    // const [myRecipes, setMyRecipes] = useState([])
     const fetchAndSetSavoryUser = async () => {
         const tokenString = localStorage.getItem("token");
         const token = JSON.parse(tokenString);
@@ -22,11 +20,6 @@ export const MyProfile = () => {
         })
     }
 
-    // const fetchAndSetRecipeByUserId = () => {
-    //     fetchMyRecipesFromAPI(savoryUser).then((recipeArray) => {
-    //         setMyRecipes(recipeArray)
-    //     })
-    // }
     useEffect(() => {
         fetchAndSetSavoryUser()
     },[])
@@ -58,7 +51,9 @@ export const MyProfile = () => {
                     <button onClick={() => {
                 navigate(`/myRecipes`);
               }} className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl w-40 m-2">View My Recipes</button>
-                    <button className="recipe-btn m-2 border-black border-solid border-2 p-2 rounded-3xl w-40">Edit Profile</button>
+                    <button onClick={() => {
+                navigate(`/profile/${savoryUser.id}/edit`);
+              }} className="recipe-btn m-2 border-black border-solid border-2 p-2 rounded-3xl w-40">Edit Profile</button>
 
                     </div>
                         </div>

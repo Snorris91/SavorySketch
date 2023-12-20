@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllRecipesFromAPI } from "../services/RecipeService";
 import { fetchAllCuisineFromAPI } from "../services/CuisineService";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const Recipe = () => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -8,6 +9,7 @@ export const Recipe = () => {
   const [allCuisines, setAllCuisines] = useState([])
   const [chosenCuisine, setChosenCuisine] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
+  const navigate = useNavigate()
 
 
   const fetchAndSetAllRecipes = () => {
@@ -97,7 +99,9 @@ const fetchAndSetAllCuisines = () => {
                 </div>
                 <div className="recipe-descrip">{recipe.description}</div>
                 <div>
-                    <button className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl">View Recipe</button>
+                    <button className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl" onClick={() => {
+                      navigate(`/recipes/${recipe.id}`)
+                    }}>View Recipe</button>
                 </div>
                 </div>
               </div>
