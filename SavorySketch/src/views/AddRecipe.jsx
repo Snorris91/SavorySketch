@@ -111,7 +111,7 @@ export const AddRecipe = () => {
           <h1>Would you like to add a recipe!?</h1>
           <fieldset>
             <div>
-              <label>Recipe title: </label>
+              <h1>Recipe title: </h1>
               <input
                 name="title"
                 type="text"
@@ -125,7 +125,7 @@ export const AddRecipe = () => {
           </fieldset>
           <fieldset>
             <div>
-              <label>Recipe Description: </label>
+              <h1>Recipe Description: </h1>
               <textarea
                 name="description"
                 type="text"
@@ -140,7 +140,7 @@ export const AddRecipe = () => {
           </fieldset>
           <fieldset>
             <div>
-              <label>Recipe Image: </label>
+              <h1>Recipe Image: </h1>
               <input
                 name="image"
                 type="text"
@@ -154,7 +154,7 @@ export const AddRecipe = () => {
           </fieldset>
           <fieldset>
             <div>
-              <label>Recipe Directions: </label>
+              <h1>Recipe Directions: </h1>
               <textarea
                 name="directions"
                 type="text"
@@ -171,7 +171,7 @@ export const AddRecipe = () => {
 
           <fieldset>
             <div>
-              <label>Cuisines!</label>
+              <h1>Cuisines!</h1>
               <select
                 className="form-field"
                 name="cuisine"
@@ -193,7 +193,7 @@ export const AddRecipe = () => {
           <div>
           <fieldset>
           <div>
-            <label>Ingredients!</label>
+            <h1>Ingredients!</h1>
             <select 
               className="form-field" 
               name="ingredientId" 
@@ -209,7 +209,7 @@ export const AddRecipe = () => {
             </select>
           </div>
           <div>
-            <label>Measurements!</label>
+            <h1>Measurements!</h1>
             <select 
               className="form-field" 
               name="measurementId" 

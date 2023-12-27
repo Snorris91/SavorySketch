@@ -22,7 +22,7 @@ export const Login = () => {
       .then((authInfo) => {
         if (authInfo.token) {
           localStorage.setItem("token", JSON.stringify(authInfo));
-          navigate("/");
+          navigate("/recipes");
         } else {
           existDialog.current.showModal();
         }
@@ -43,7 +43,7 @@ export const Login = () => {
 
       <section>
         <form className="form--login" onSubmit={handleLogin}>
-          <h1 className="text-4xl mt-7 mb-3">Readers Digest</h1>
+          <h1 className="text-4xl mt-7 mb-3">Savory Sketch</h1>
           <h2 className="text-xl mb-10">Please sign in</h2>
           <fieldset className="mb-4">
             <label htmlFor="inputusername"> UserName </label>

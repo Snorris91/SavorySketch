@@ -46,7 +46,7 @@ export const MyProfile = () => {
                         <span className="cantact font-bold">Contact<br></br>
                         </span>{savoryUser.user?.email}
                     </div>
-                    <div className="profile-button flex">
+                    <div className="profile-button flex justify-center">
 
                     <button onClick={() => {
                 navigate(`/myRecipes`);

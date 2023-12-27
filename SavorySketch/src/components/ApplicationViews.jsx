@@ -1,9 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Authorized } from "./Authorized.jsx";
 import { Login } from "../pages/Login.jsx";
-import Home from "../pages/Home";
 import { Register } from "../pages/Register.jsx";
-import { useEffect, useState } from "react";
 import { Cuisines } from "../views/Cuisine.jsx";
 import { Ingredients } from "../views/Ingredients.jsx";
 import { MyProfile } from "../views/Profile.jsx";
@@ -20,7 +18,6 @@ export const ApplicationViews = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<Authorized />}>
-          <Route index element={<Home />} />
           <Route path="/recipes">
             <Route index element={<Recipe />} />
             <Route path=":recipeId" element={<ViewRecipe />} />

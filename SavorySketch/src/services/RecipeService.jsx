@@ -32,3 +32,15 @@ export const submitNewRecipeToAPI = (payload) => {
     body: JSON.stringify(payload),
   });
 };
+
+
+export const updateRecipeLikesToAPI = (recipe) => {
+  return fetch(`http://localhost:8000/recipes/${recipe.id}`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Token ${JSON.parse(localStorage.getItem("token")).token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(recipe),
+  });
+};
