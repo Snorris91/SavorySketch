@@ -44,3 +44,12 @@ export const updateRecipeLikesToAPI = (recipe) => {
     body: JSON.stringify(recipe),
   });
 };
+
+export const deleteRecipe = (recipe) => {
+  return fetch(`http://localhost:8000/recipes/${recipe}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Token ${JSON.parse(localStorage.getItem("token")).token}`,
+    },
+  });
+};

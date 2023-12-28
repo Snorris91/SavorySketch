@@ -29,7 +29,7 @@ export const Register = () => {
       .then((authInfo) => {
         if (authInfo && authInfo.token) {
           localStorage.setItem("token", JSON.stringify(authInfo));
-          navigate("/");
+          navigate("/profile");
         } else {
           existDialog.current.showModal();
         }
@@ -50,7 +50,7 @@ export const Register = () => {
 
       <section>
         <form className="form--login" onSubmit={handleRegister}>
-          <h1 className="text-4xl mt-7 mb-3">Rock of Ages</h1>
+          <h1 className="text-4xl mt-7 mb-3">Savory Sketch</h1>
           <h2 className="text-xl mb-10">Register new account</h2>
           <fieldset className="mb-4">
             <label htmlFor="firstName"> First name </label>
@@ -90,7 +90,7 @@ export const Register = () => {
             />
           </fieldset>
           <fieldset className="mb-4">
-            <label htmlFor="inputUsername"> Username address </label>
+            <label htmlFor="inputUsername"> Username </label>
             <input
               type="username"
               id="inputUsername"

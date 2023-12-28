@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { fetchOneRecipeFromAPI, updateRecipeLikesToAPI } from "../services/RecipeService";
+import {
+  fetchOneRecipeFromAPI,
+  updateRecipeLikesToAPI,
+} from "../services/RecipeService";
 import {
   fetchCommentsForRecipeFromAPI,
   postNewCommentToAPI,
@@ -86,10 +89,10 @@ export const ViewRecipe = () => {
 
     const newLikeCopy = {
       id: recipeId,
-      number_of_likes: likeCount + 1
-    }
-    updateRecipeLikesToAPI(newLikeCopy)
-    fetchAndSetThisRecipe()
+      number_of_likes: likeCount + 1,
+    };
+    updateRecipeLikesToAPI(newLikeCopy);
+    fetchAndSetThisRecipe();
   };
 
   return (
@@ -138,18 +141,27 @@ export const ViewRecipe = () => {
           className="recipe-card flex p-10 border-black border-solid border-2 m-4 "
         >
           <div className="recipe-left flex flex-col mr-10 items-center text-center w-1/3">
+            <Link key={recipe.user?.id} to={`/recipes/${recipe.user?.id}/profile`}>
+              <span className="recipe-user mb-2">
+                By: {recipe.user?.user.username}
+              </span>
+            </Link>
             <Link to={"/recipes"}>
-            <span>By: {recipe.user?.user.username}</span>
-            <img
-              src={recipe.image}
-              alt={recipe.name}
-              className="recipe-img h-[300px] w-[350px]"
-            />
+              <img
+                src={recipe.image}
+                alt={recipe.name}
+                className="recipe-img h-[300px] w-[350px]"
+              />
             </Link>
             <div>Cuisine: {recipe.cuisine.name}</div>
             <div>
               {likeCount} {likeCount === 1 ? "Like" : "Likes"}
-              <button className="like-btn ml-2 border-black border-solid border-[1px] rounded-full p-1" onClick={handleLikeClick}>1UP!</button>
+              <button
+                className="like-btn ml-2 border-black border-solid border-[1px] rounded-full p-1"
+                onClick={handleLikeClick}
+              >
+                1UP!
+              </button>
             </div>
             <div>Date Posted: {recipe.publication_date}</div>
             <button

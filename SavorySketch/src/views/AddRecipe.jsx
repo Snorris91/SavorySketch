@@ -68,8 +68,17 @@ export const AddRecipe = () => {
     }
   };
 
+  const handleDeleteFromList = (index) => {
+    // Create a copy of the array without the item at the specified index
+    const updatedRecipeItems = [...recipeItems];
+    updatedRecipeItems.splice(index, 1);
+  
+    // Update the state with the new array
+    setRecipeItems(updatedRecipeItems);
+  };
+
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault(); 
   
     const ingredientIds = recipeItems.map(item => item.ingredientId);
     const measurementIds = recipeItems.map(item => item.measurementId);
@@ -236,6 +245,9 @@ export const AddRecipe = () => {
             {recipeItems.map((item, index) => (
               <li key={index}>
                 {`Ingredient: ${item.ingredientName}, Measurement: ${item.measurementName}`}
+                <button type="button" onClick={() => handleDeleteFromList(index)}>
+          X
+        </button>
               </li>
             ))}
           </ul>

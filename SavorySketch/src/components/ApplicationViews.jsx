@@ -10,6 +10,7 @@ import { MyRecipe } from "../views/MyRecipe.jsx";
 import { AddRecipe } from "../views/AddRecipe.jsx";
 import { EditProfile } from "../views/EditProfile.jsx";
 import { ViewRecipe } from "../views/ViewRecipe.jsx";
+import { OtherProfile } from "../views/OtherProfile.jsx";
 
 export const ApplicationViews = () => {
   return (
@@ -21,6 +22,7 @@ export const ApplicationViews = () => {
           <Route path="/recipes">
             <Route index element={<Recipe />} />
             <Route path=":recipeId" element={<ViewRecipe />} />
+            <Route path=":userId/profile" element={<OtherProfile />} />
           </Route>
           <Route path="/myrecipes" element={<MyRecipe />} />
           <Route path="/addrecipes" element={<AddRecipe />} />

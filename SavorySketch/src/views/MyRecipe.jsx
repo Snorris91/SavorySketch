@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  deleteRecipe,
   fetchAllRecipesFromAPI,
   fetchMyRecipesFromAPI,
 } from "../services/RecipeService";
@@ -22,6 +23,14 @@ export const MyRecipe = () => {
     });
   };
 
+  const handleDelete = (recipe) => {
+    deleteRecipe(recipe).then(() => {
+      fetchAndSetRecipes()
+      fetchAndSetSavoryUser()
+    })
+
+  }
+
   const fetchAndSetRecipes = () => {
     fetchAllRecipesFromAPI().then((recipeArray) => {
       setAllRecipes(recipeArray);
@@ -41,7 +50,7 @@ export const MyRecipe = () => {
   return (
     <>
       <div>
-        <h1>Darth Vadar</h1>
+        <h1 className="title font-bold text-3xl text-center">My Recipes</h1>
         <div className="recipes m-5 grid lg:grid-cols-3 sm:grid-cols-2">
           {filteredRecipes.map((recipe) => {
             return (
@@ -64,11 +73,16 @@ export const MyRecipe = () => {
                     <i>{recipe.title}</i>
                   </div>
                   <div className="recipe-descrip">{recipe.description}</div>
-                  <div>
-                    <button className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl" onClick={() => {
+                  <div className="myRecipe-btn flex">
+                    <button className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl m-2" onClick={() => {
                       navigate(`/recipes/${recipe.id}`)
                     }}>
                       View Recipe
+                    </button>
+                    <button className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl m-2" onClick={() => {
+                      handleDelete(recipe.id)
+                    }}>
+                      Delete Recipe
                     </button>
                   </div>
                 </div>
