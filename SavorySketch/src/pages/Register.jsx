@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
@@ -6,6 +6,8 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [biography, setBiography] = useState("");
+  const [profileImg, setProfileImg] = useState("");
   const [email, setEmail] = useState("")
   const existDialog = useRef();
   const navigate = useNavigate();
@@ -20,6 +22,8 @@ export const Register = () => {
         first_name: firstName,
         last_name: lastName,
         email: email,
+        biography: biography,
+        profile_img: profileImg,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +46,7 @@ export const Register = () => {
         <div>User does not exist</div>
         <button
           className="button--close"
-          onClick={(e) => existDialog.current.close()}
+          onClick={() => existDialog.current.close()}
         >
           Close
         </button>
@@ -111,6 +115,28 @@ export const Register = () => {
               onChange={(evt) => setPassword(evt.target.value)}
               className="form-control"
               placeholder="Password"
+            />
+          </fieldset>
+          <fieldset className="mb-4">
+            <label htmlFor="inputBiography"> Biography </label>
+            <input
+              type="biography"
+              id="inputBiography"
+              value={biography}
+              onChange={(evt) => setBiography(evt.target.value)}
+              className="form-control"
+              placeholder="Biography"
+            />
+          </fieldset>
+          <fieldset className="mb-4">
+            <label htmlFor="inputProfile_img"> Profile_img </label>
+            <input
+              type="profile_img"
+              id="inputProfile_img"
+              value={profileImg}
+              onChange={(evt) => setProfileImg(evt.target.value)}
+              className="form-control"
+              placeholder="Profile_img"
             />
           </fieldset>
           <fieldset>

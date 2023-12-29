@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import {
   deleteRecipe,
   fetchAllRecipesFromAPI,
-  fetchMyRecipesFromAPI,
 } from "../services/RecipeService";
 import { fetchUserById } from "../services/UserService";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +15,7 @@ export const MyRecipe = () => {
   const fetchAndSetSavoryUser = async () => {
     const tokenString = localStorage.getItem("token");
     const token = JSON.parse(tokenString);
-    const userId = token.user_id;
+    const userId = token.savoryuser_id;
 
     await fetchUserById(userId).then((userArray) => {
       setSavoryUser(userArray);
@@ -56,14 +55,14 @@ export const MyRecipe = () => {
             return (
               <div
                 key={recipe.id}
-                className="recipe-card flex p-10 border-black border-solid border-2 m-4 overflow-hidden"
+                className="recipe-card  bg-blue-300 flex p-10  border-blue-500 border-solid border-1 m-2 overflow-hidden"
               >
-                <div className="recipe-left mr-10 text-center">
+                <div className="recipe-left text-center">
                   {/* <Link to={`/MyRecipes/${recipe.id}`}> */}
                   <img
                     src={recipe.image}
                     alt={recipe.name}
-                    className="recipe-img h-[250px] w-[250px]"
+                    className="recipe-img border border-blue-500 mb-2 h-[250px] w-[250px]"
                   />
                   {/* </Link> */}
                   {recipe.number_of_likes} Likes

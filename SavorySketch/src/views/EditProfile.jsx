@@ -9,7 +9,7 @@ export const EditProfile = () => {
     const fetchAndSetSavoryUser = async () => {
         const tokenString = localStorage.getItem("token");
         const token = JSON.parse(tokenString);
-        const userId = token.user_id;
+        const userId = token.savoryuser_id;
 
         await fetchUserById(userId).then((userArray) => {
             setSavoryUser(userArray)

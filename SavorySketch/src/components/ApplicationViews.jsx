@@ -24,7 +24,7 @@ export const ApplicationViews = () => {
             <Route path=":recipeId" element={<ViewRecipe />} />
             <Route path=":userId/profile" element={<OtherProfile />} />
           </Route>
-          <Route path="/myrecipes" element={<MyRecipe />} />
+          <Route path="/myRecipes" element={<MyRecipe />} />
           <Route path="/addrecipes" element={<AddRecipe />} />
           <Route path="/cuisines" element={<Cuisines />} />
           <Route path="/ingredients" element={<Ingredients />} />
