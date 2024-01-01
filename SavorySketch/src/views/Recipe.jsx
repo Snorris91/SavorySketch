@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllRecipesFromAPI } from "../services/RecipeService";
 import { fetchAllCuisineFromAPI } from "../services/CuisineService";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Recipe = () => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -84,28 +84,26 @@ export const Recipe = () => {
             return (
               <div
                 key={recipe.id}
-                className="recipe-card  bg-blue-300 flex p-10  border-blue-500 border-solid border-1 m-2 overflow-hidden"
+                className="recipe-card flex justify-between bg-blue-300 p-10  border-blue-500 border-solid border-2 m-2"
               >
-                <div className="recipe-left mr-10 text-center">
-                  {/* <Link to={`/allRecipes/${recipe.id}`}> */}
+                <div className="recipe-left text-center">
                   <img
-                    src={recipe.image || "default-image.jpg"} // Replace 'default-image.jpg' with your actual default image URL or path
+                    src={recipe.image || "default-image.jpg"}
                     alt="Image Not Found"
-                    className={`recipe-img h-40 w-48  border border-blue-500 object-cover ${
+                    className={`recipe-img h-32 w-40 object-cover border border-blue-500 ${
                       !recipe.image && "bg-gray-300"
                     }`}
                   />
-                  {/* </Link> */}
                   {recipe.number_of_likes} Likes
                 </div>
-                <div className="recipe-right flex flex-col justify-between text-center ml-10">
+                <div className="recipe-right flex flex-col justify-between text-center ">
                   <div className="recipe-name">
                     <i>{recipe.title}</i>
                   </div>
                   <div className="recipe-descrip">{recipe.description}</div>
                   <div>
                     <button
-                      className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl"
+                      className="btn-view"
                       onClick={() => {
                         navigate(`/recipes/${recipe.id}`);
                       }}

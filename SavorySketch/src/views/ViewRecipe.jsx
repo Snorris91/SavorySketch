@@ -99,7 +99,7 @@ export const ViewRecipe = () => {
     <>
       {isModalOpen && (
         <dialog
-          className="manage-comment w-[450px] h-[250px] flex flex-col justify-center text-center rounded-3xl border-2 border-solid border-black"
+          className="manage-comment w-[450px] h-[250px] flex flex-col justify-center text-center rounded-3xl  bg-blue-200 p-10  border-blue-500 border-solid border-2"
           ref={manageComments}
         >
           <div className="comment-modal m-2">
@@ -119,15 +119,12 @@ export const ViewRecipe = () => {
           </div>
           <div className="comment-btn flex flex-row justify-evenly">
             <button
-              className="save-button border-2 border-solid border-black p-2 w-[100px] rounded-3xl"
+              className="bg-green-500 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-700 text-white font-bold py-2 px-4 rounded"
               onClick={handleSubmit}
             >
               Save
             </button>
-            <button
-              className="exit-button border-2 border-solid border-black p-2 w-[100px] rounded-3xl"
-              onClick={handleCloseComments}
-            >
+            <button className="btn-delete" onClick={handleCloseComments}>
               Cancel
             </button>
           </div>
@@ -135,13 +132,15 @@ export const ViewRecipe = () => {
       )}
 
       <div>
-        Hello World!
         <div
           key={recipe.id}
-          className="recipe-card flex p-10 border-black border-solid border-2 m-4 "
+          className="recipe-card flex bg-blue-300 p-10  border-blue-500 border-solid border-2"
         >
           <div className="recipe-left flex flex-col mr-10 items-center text-center w-1/3">
-            <Link key={recipe.user?.id} to={`/recipes/${recipe.user?.id}/profile`}>
+            <Link
+              key={recipe.user?.id}
+              to={`/recipes/${recipe.user?.id}/profile`}
+            >
               <span className="recipe-user mb-2">
                 By: {recipe.user?.user.username}
               </span>
@@ -157,7 +156,7 @@ export const ViewRecipe = () => {
             <div>
               {likeCount} {likeCount === 1 ? "Like" : "Likes"}
               <button
-                className="like-btn ml-2 border-black border-solid border-[1px] rounded-full p-1"
+                className="like-btn ml-2 bg-green-500 hover:bg-green-600 focus:outline-none focus:ring focus:border-green-700 text-white font-bold py-1 px-1 rounded"
                 onClick={handleLikeClick}
               >
                 1UP!
@@ -165,7 +164,7 @@ export const ViewRecipe = () => {
             </div>
             <div>Date Posted: {recipe.publication_date}</div>
             <button
-              className="comment border-2 border-solid border-black p-3 rounded-3xl"
+              className="btn-view"
               onClick={() => {
                 handleManageComments();
               }}
@@ -181,7 +180,7 @@ export const ViewRecipe = () => {
             <div className="recipe-ing">
               <h2>Ingredients</h2>
               <ul>
-                {formattedIngredients.map((formattedIngredient, index) => {
+                {formattedIngredients?.map((formattedIngredient, index) => {
                   return (
                     <li key={index + 1}>
                       {formattedIngredient.measurement}{" "}
@@ -197,7 +196,7 @@ export const ViewRecipe = () => {
             </div>
             <div>
               <div>Comments</div>
-              {comments.map((comment) => {
+              {comments?.map((comment) => {
                 return (
                   <>
                     {/* Add additional logic for user img and formatting */}

@@ -4,7 +4,7 @@ import "./NavBar.css"
 export const NavBar = () => {
     const navigate = useNavigate()
     return (
-<ul className="navbar bg-blue-300 m-4 p-5 rounded-lg shadow-md border border-blue-500">
+<ul className="navbar bg-blue-300 m-4 p-5 rounded-lg shadow-md border-2 border-blue-500">
                 <li className="navbar__item pl-10">
                 <NavLink className="text-left underline text-black hover:text-purple-700" to={"/recipes"}>All Recipes</NavLink>
             </li>

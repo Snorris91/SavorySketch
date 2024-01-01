@@ -28,8 +28,8 @@ export const MyProfile = () => {
     return (
         <>
         <div>
-                    <h1 className="title text-center text-4xl">Your Profile</h1>
-                    <div className="profile-card flex justify-evenly">
+                    <h1 className="title text-center text-4xl font-bold text-white ">Your Profile</h1>
+                    <div className="profile-card flex justify-evenly  bg-blue-300 border-blue-500 border-solid border-2">
                         <div className="profile-left text-center m-1">
 
             <span>{savoryUser.user?.full_name}</span>
@@ -50,10 +50,10 @@ export const MyProfile = () => {
 
                     <button onClick={() => {
                 navigate(`/myRecipes`);
-              }} className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl w-40 m-2">View My Recipes</button>
+              }} className="btn-view">View My Recipes</button>
                     <button onClick={() => {
                 navigate(`/profile/${savoryUser.id}/edit`);
-              }} className="recipe-btn m-2 border-black border-solid border-2 p-2 rounded-3xl w-40">Edit Profile</button>
+              }} className="bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring focus:border-yellow-700 text-white font-bold py-2 px-4 rounded ml-4">Edit Profile</button>
 
                     </div>
                         </div>

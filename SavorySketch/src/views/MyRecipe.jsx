@@ -10,7 +10,7 @@ export const MyRecipe = () => {
   const [allRecipes, setAllRecipes] = useState([]);
   const [filteredRecipes, setFilteredRecipes] = useState([]);
   const [savoryUser, setSavoryUser] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const fetchAndSetSavoryUser = async () => {
     const tokenString = localStorage.getItem("token");
@@ -24,11 +24,10 @@ export const MyRecipe = () => {
 
   const handleDelete = (recipe) => {
     deleteRecipe(recipe).then(() => {
-      fetchAndSetRecipes()
-      fetchAndSetSavoryUser()
-    })
-
-  }
+      fetchAndSetRecipes();
+      fetchAndSetSavoryUser();
+    });
+  };
 
   const fetchAndSetRecipes = () => {
     fetchAllRecipesFromAPI().then((recipeArray) => {
@@ -49,20 +48,22 @@ export const MyRecipe = () => {
   return (
     <>
       <div>
-        <h1 className="title font-bold text-3xl text-center">My Recipes</h1>
+        <h1 className="title font-bold text-3xl text-center text-white">
+          My Recipes
+        </h1>
         <div className="recipes m-5 grid lg:grid-cols-3 sm:grid-cols-2">
           {filteredRecipes.map((recipe) => {
             return (
               <div
                 key={recipe.id}
-                className="recipe-card  bg-blue-300 flex p-10  border-blue-500 border-solid border-1 m-2 overflow-hidden"
+                className="recipe-card  bg-blue-300 flex p-10  border-blue-500 border-solid border-2 m-2 overflow-hidden"
               >
                 <div className="recipe-left text-center">
                   {/* <Link to={`/MyRecipes/${recipe.id}`}> */}
                   <img
                     src={recipe.image}
                     alt={recipe.name}
-                    className="recipe-img border border-blue-500 mb-2 h-[250px] w-[250px]"
+                    className="recipe-img border border-blue-500 mb-2 h-[150px] w-[250px]"
                   />
                   {/* </Link> */}
                   {recipe.number_of_likes} Likes
@@ -73,14 +74,20 @@ export const MyRecipe = () => {
                   </div>
                   <div className="recipe-descrip">{recipe.description}</div>
                   <div className="myRecipe-btn flex">
-                    <button className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl m-2" onClick={() => {
-                      navigate(`/recipes/${recipe.id}`)
-                    }}>
+                    <button
+                      className="btn-view"
+                      onClick={() => {
+                        navigate(`/recipes/${recipe.id}`);
+                      }}
+                    >
                       View Recipe
                     </button>
-                    <button className="recipe-btn border-black border-solid border-2 p-2 rounded-3xl m-2" onClick={() => {
-                      handleDelete(recipe.id)
-                    }}>
+                    <button
+                      className="btn-delete ml-2"
+                      onClick={() => {
+                        handleDelete(recipe.id);
+                      }}
+                    >
                       Delete Recipe
                     </button>
                   </div>
