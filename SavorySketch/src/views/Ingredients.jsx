@@ -39,19 +39,7 @@ export const Ingredients = () => {
       <div className="title text-3xl text-center mb-4 font-bold text-white">
         All Ingredients!!
       </div>
-      <div className="ingred-cont flex flex-col">
-        <div className="ingredient-list flex flex-wrap">
-          {ingredients.map((ingredient) => {
-            return (
-              <div key={ingredient.id}>
-                <div className="name m-1 list-none bg-gray-200 p-2 mb-2 rounded-md transition duration-300 hover:bg-red-600 hover:text-white cursor-pointer">
-                  <li className="list-name">{ingredient.label}</li>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="flex justify-center mt-4">
+      <div className="flex justify-center my-4">
           <div className="addIngredient flex-col bg-blue-300 border-blue-500 border-solid border-2 p-3 w-[550px]">
             <div className="ingredient-title ">
               <span className="ingred-title font-bold ">
@@ -79,6 +67,19 @@ export const Ingredients = () => {
             </button>
           </div>
         </div>
+      <div className="ingred-cont flex flex-col">
+        <div className="ingredient-list flex flex-wrap">
+          {ingredients.map((ingredient) => {
+            return (
+              <div key={ingredient.id}>
+                <div className="name m-1 list-none bg-gray-200 p-2 mb-2 rounded-md transition duration-300 hover:bg-red-600 hover:text-white cursor-pointer">
+                  <li className="list-name">{ingredient.label}</li>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        
       </div>
     </>
   );

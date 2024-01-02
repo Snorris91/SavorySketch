@@ -3,8 +3,10 @@ import { fetchAllIngredientsFromAPI } from "../services/IngredientService";
 import { fetchAllMeasurementsFromAPI } from "../services/MeasurementService";
 import { fetchAllCuisineFromAPI } from "../services/CuisineService";
 import { submitNewRecipeToAPI } from "../services/RecipeService";
+import { useNavigate } from "react-router-dom";
 
 export const AddRecipe = () => {
+  const navigate = useNavigate()
   const [cuisines, setCuisines] = useState([]);
   const [ingredients, setIngredients] = useState([]);
   const [measurements, setMeasurements] = useState([]);
@@ -29,11 +31,6 @@ export const AddRecipe = () => {
     fetchAllCuisineFromAPI().then(setCuisines);
   }, []);
 
-  const handleInputChange = (e) => {
-    const itemCopy = { ...newRecipe };
-    itemCopy[e.target.name] = e.target.value;
-    setNewRecipe(itemCopy);
-  };
 
   const handleRecipeInputChange = (e) => {
     setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value });
@@ -101,26 +98,18 @@ export const AddRecipe = () => {
       ingredients: ingredientIds,
       measurements: measurementIds,
     };
-
     console.log("Submitting Recipe:", payload);
-
-    // Here, you can make a POST request to your backend with the payload
-    // For example: axios.post('/api/recipes', payload);
     try {
       const response = await submitNewRecipeToAPI(payload);
       if (response.ok) {
-        // Handle successful submission
         console.log("Recipe submitted successfully");
-        // You might want to reset form or redirect user here
       } else {
-        // Handle errors, such as displaying a message
         console.error("Failed to submit recipe", await response.json());
       }
     } catch (error) {
-      // Handle any network errors
       console.error("Network error:", error);
     }
-    // Reset form or navigate to another page if needed
+    navigate("/recipes")
   };
 
   return (
