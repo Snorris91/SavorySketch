@@ -42,10 +42,11 @@ export const Login = () => {
       </dialog>
 
       <section>
-        <form className="form--login" onSubmit={handleLogin}>
-          <h1 className="text-4xl mt-7 mb-3">Savory Sketch</h1>
-          <h2 className="text-xl mb-10">Please sign in</h2>
-          <fieldset className="mb-4">
+          <h1 className="text-4xl mt-7 mb-3 font-bold text-white text-center">Savory Sketch</h1>
+          <h2 className="text-xl mb-10 font-bold text-white text-center">Please sign in</h2>
+        <form className="form--login flex justify-center" onSubmit={handleLogin}>
+          <div className="form-area text-center bg-blue-300 p-10  border-blue-500 border-solid border-2 w-[350px]">
+            <fieldset className="mb-4">
             <label htmlFor="inputusername"> UserName </label>
             <input
               type="username"
@@ -76,10 +77,7 @@ export const Login = () => {
             >
               Sign in
             </button>
-          </fieldset>
-        </form>
-      </section>
-      <div className="loginLinks">
+          </fieldset><div className="loginLinks">
         <section className="link--register">
           <Link
             className="underline text-blue-600 hover:text-blue-800 visited:text-purple-600"
@@ -89,6 +87,11 @@ export const Login = () => {
           </Link>
         </section>
       </div>
+          </div>
+          
+        </form>
+      </section>
+      
     </main>
   );
 };

@@ -31,6 +31,7 @@ export const AddRecipe = () => {
     fetchAllCuisineFromAPI().then(setCuisines);
   }, []);
 
+  const sortedIngredients = [...ingredients].sort((a, b) => a.label.localeCompare(b.label));
 
   const handleRecipeInputChange = (e) => {
     setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value });
@@ -114,14 +115,17 @@ export const AddRecipe = () => {
 
   return (
     <>
+    <div>
+          <h1 className="title text-3xl font-bold text-white text-center  mb-4">
+            Would you like to add a recipe!?
+          </h1>
+
+    </div>
       <form
         className="form-area text-center bg-blue-300 p-10  border-blue-500 border-solid border-2"
         onSubmit={handleSubmit}
       >
         <div>
-          <h1 className="title text-3xl  mb-4">
-            Would you like to add a recipe!?
-          </h1>
           <fieldset>
             <div>
               <h1>Recipe title: </h1>
@@ -199,7 +203,7 @@ export const AddRecipe = () => {
                     onChange={handleSelectChange}
                   >
                     <option value="">Please Select an Ingredient</option>
-                    {ingredients.map((ingredient) => (
+                    {sortedIngredients.map((ingredient) => (
                       <option value={ingredient.id} key={ingredient.id}>
                         {ingredient.label}
                       </option>

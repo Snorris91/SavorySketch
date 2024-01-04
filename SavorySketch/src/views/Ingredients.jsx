@@ -19,6 +19,8 @@ export const Ingredients = () => {
     fetchAndSetIngredients();
   }, []);
 
+  const sortedIngredients = [...ingredients].sort((a, b) => a.label.localeCompare(b.label));
+
   const submitIngredient = (event) => {
     event.preventDefault();
     postNewIngredient(newIngredient).then(() => {
@@ -69,7 +71,7 @@ export const Ingredients = () => {
         </div>
       <div className="ingred-cont flex flex-col">
         <div className="ingredient-list flex flex-wrap">
-          {ingredients.map((ingredient) => {
+          {sortedIngredients.map((ingredient) => {
             return (
               <div key={ingredient.id}>
                 <div className="name m-1 list-none bg-gray-200 p-2 mb-2 rounded-md transition duration-300 hover:bg-red-600 hover:text-white cursor-pointer">
